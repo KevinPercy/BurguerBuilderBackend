@@ -24,6 +24,7 @@ class UserProfileManager(BaseUserManager):
         user = self.create_user(email, password)
 
         user.is_superuser = True
+        user.is_staff = True
         
         user.save(using=self._db)
 
@@ -34,6 +35,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     """Database model for users in the system"""
     email = models.EmailField(max_length=255, unique= True)
     is_active = models.BooleanField(default= True)
+    is_staff = models.BooleanField(default=False)
 
     objects = UserProfileManager()
 
