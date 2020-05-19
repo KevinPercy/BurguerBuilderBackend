@@ -4,5 +4,7 @@
         "**/.git: true": true
     },
     "python.pythonPath": "/usr/bin/python3",
-    "python.linting.enabled": false
+    "python.linting.enabled": false,
+    "bracket-pair-colorizer-2.showHorizontalScopeLine": false,
+    "bracket-pair-colorizer-2.showVerticalScopeLine": false
 }
