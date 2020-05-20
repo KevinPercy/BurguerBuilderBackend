@@ -12,6 +12,7 @@ from burgerbuilder_api import serializers
 from burgerbuilder_api import permissions
 from burgerbuilder_api import models
 
+
 class UserProfileViewSet(viewsets.ModelViewSet):
     """Handle creating and updating profiles"""
     serializer_class = serializers.UserProfileSerializer
@@ -37,6 +38,39 @@ class UserProfileViewSet(viewsets.ModelViewSet):
         return Response(serializer.errors,
                         status=status.HTTP_400_BAD_REQUEST)
 
+
 class UserLoginApiView(ObtainAuthToken):
     """Handle creating user authentication tokens"""
     renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
+
+
+class IngredientsViewSet(viewsets.ModelViewSet):
+    """Handles creating, reading and updating ingredients items"""
+    authentication_classes = (TokenAuthentication,)
+    serializer_class = serializers.IngredientsSerializer
+    queryset = models.Ingredients.objects.all()
+    permission_classes = (permissions.IsSuperuserOrIsSelf,)
+
+
+class IngredientsViewSet(viewsets.ModelViewSet):
+    """Handles creating, reading and updating ingredients items"""
+    authentication_classes = (TokenAuthentication,)
+    serializer_class = serializers.IngredientsSerializer
+    queryset = models.Ingredients.objects.all()
+    permission_classes = (permissions.IsSuperuserOrIsSelf,)
+
+
+class ContactDataViewSet(viewsets.ModelViewSet):
+    """Handles creating, reading and updating contact data"""
+    uthentication_classes = (TokenAuthentication,)
+    serializer_class = serializers.ContactDataSerializer
+    queryset = models.ContactData.objects.all()
+    permission_classes = (permissions.IsSuperuserOrIsSelf,)
+
+
+class OrderViewSet(viewsets.ModelViewSet):
+    """Handles creating, reading and updating Orders data """
+    uthentication_classes = (TokenAuthentication,)
+    serializer_class = serializers.OrderSerializer
+    queryset = models.Order.objects.all()
+    permission_classes = (permissions.IsSuperuserOrIsSelf,)

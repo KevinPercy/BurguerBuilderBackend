@@ -48,6 +48,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
         return self.email
 
 
+
 class Ingredients(models.Model):
     """The burger ingredients"""
     ingredient = models.CharField(max_length=10)
@@ -57,14 +58,15 @@ class Ingredients(models.Model):
         """return the models as a string"""
         return self.ingredient
 
+
 class ContactData(models.Model):
     """The order contact data"""
     name = models.CharField(max_length=30)
     email = models.EmailField(max_length=254)
     street =  models.CharField(max_length=100)
     country = models.CharField(max_length=30)
-    zipcode = models.CharField(max_length=6)
-    deliveryMethod = models.CharField(max_length=10)
+    zip_code = models.CharField(max_length=6)
+    delivery_method = models.CharField(max_length=10)
     def __str__(self):
         """return the models as a string"""
         return '{} {}'.format(self.name, self.email)

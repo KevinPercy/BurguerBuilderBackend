@@ -4,8 +4,7 @@ from burgerbuilder_api import models
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
-    """serializes a user profile object"""
-    
+    """serializes a user profile object"""    
 
     class Meta:
         model = models.UserProfile
@@ -32,3 +31,39 @@ class PasswordSerializer(serializers.Serializer):
     """
     old_password = serializers.CharField(required=True)
     new_password = serializers.CharField(required=True)
+
+
+class IngredientsSerializer(serializers.ModelSerializer):
+    """Serializer of Ingredients Model"""
+    
+    class Meta: 
+        model = models.Ingredients
+        fields = ('ingredient', 'quantity')
+
+
+class ContactDataSerializer(serializers.ModelSerializer):
+    """Serializer of Contact data Model"""
+
+    class Meta:
+        model = models.ContactData
+        fields = ('id','name', 'email', 'street', 'country', 'zip_code', 'delivery_method')
+
+class OrderSerializer(serializers.ModelSerializer):
+    """Serializer of Order data model"""
+
+    class Meta:
+        model = models.Order
+        fields = ('id', 'user_id', 'contact_data_id', 'salad', 'bacon', 'cheese', 'meat', 'price')
+        # extra_kwargs = {
+        #     'user_id':{
+        #         'read_only':True
+        #     },
+        #     'contact_data_id':{
+        #         'read_only':True
+        #     }
+        # }
+
+
+
+
+    
