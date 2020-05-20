@@ -9,6 +9,7 @@ from rest_framework.settings import api_settings
 from rest_framework.decorators import action
 
 from burgerbuilder_api import serializers
+from burgerbuilder_api import permissions
 from burgerbuilder_api import models
 
 class UserProfileViewSet(viewsets.ModelViewSet):
@@ -20,7 +21,7 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     search_fields = ('email',)
 
     @action(methods=['put'], detail=True, serializer_class=serializers.PasswordSerializer, 
-    url_path='change-password', url_name='change_password')
+    permission_classes=[permissions.IsSuperuserOrIsSelf], url_path='change-password', url_name='change_password')
     def set_password(self, request, pk=None):
         serializer = serializers.PasswordSerializer(data=request.data)
         user = self.get_object()
