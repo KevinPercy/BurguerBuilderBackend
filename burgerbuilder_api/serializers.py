@@ -2,8 +2,10 @@ from rest_framework import serializers
 from burgerbuilder_api import models
 
 
+
 class UserProfileSerializer(serializers.ModelSerializer):
     """serializes a user profile object"""
+    
 
     class Meta:
         model = models.UserProfile
@@ -23,3 +25,10 @@ class UserProfileSerializer(serializers.ModelSerializer):
         )
 
         return user
+
+class PasswordSerializer(serializers.Serializer):
+    """
+    Serializer for password change endpoint.
+    """
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True)
