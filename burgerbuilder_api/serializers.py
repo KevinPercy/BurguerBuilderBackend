@@ -38,7 +38,7 @@ class IngredientsSerializer(serializers.ModelSerializer):
     
     class Meta: 
         model = models.Ingredients
-        fields = ('ingredient', 'quantity')
+        fields = ('id', 'ingredient', 'quantity')
 
 
 class ContactDataSerializer(serializers.ModelSerializer):
